@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594288236029",
+    "project_id": "sparkfire-d0f6c",
+    "storage_bucket": "sparkfire-d0f6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594288236029:android:015119b6d1bbfada4ff594",
+        "android_client_info": {
+          "package_name": "com.lizzwizz.spark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594288236029-8ml1b3gjfj75vbard633qdvucdth5s1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHXNgs46Bp5Hb5LmnZqybSshmkWgzJg18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594288236029-8ml1b3gjfj75vbard633qdvucdth5s1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

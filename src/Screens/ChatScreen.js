@@ -165,9 +165,9 @@ import {
               `https://app.nativenotify.com/api/indie/notification`,
               {
                 subID: `${friendEmail}`,
-                appId: 6469,
-                appToken: "zAbc4Qr227l0eSD1Cvpfo8",
-                title: `${sender} - LetsChat`,
+                appId: 6721,
+                appToken: "9KCo2ZIiQCAZSb17khqD3X",
+                title: `${sender} - Spark`,
                 message: `${message}`,
               }
             );

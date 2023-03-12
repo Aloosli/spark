@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-
-import { Image, Statusbar } from "react-native";
+import { Image, StatusBar } from "react-native";
 import LoginScreen from "./src/Screens/LoginScreen";
-import RegisterScreen from "./src/Screens/RegisterScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import RegisterScreen from "./src/Screens/RegisterScreen";
 import AuthenticatedUserProvider, {
   AuthenticatedUserContext,
 } from "./Context/AuthenticationContext";
 import HomeScreen from "./src/Screens/HomeScreen";
-import ProfileScreen from "./src/Screens/ProfileScreen";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
+import ProfileScreen from "./src/Screens/ProfileScreen";
 import SearchScreen from "./src/Screens/SearchScreen";
+import ChatScreen from "./src/Screens/ChatScreen";
 const loadingGif = require("./assets/loading.gif");
 
 const Stack = createNativeStackNavigator();
@@ -46,30 +45,43 @@ function RootNavigator() {
     </NavigationContainer>
   );
 }
+
 function AuthStack() {
   return (
     <Stack.Navigator
       initialRouteName="Login"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
     </Stack.Navigator>
   );
 }
+
 function MainStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Spark" component={HomeScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{ title: "" }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{ title: "With whom " }}
+      />
     </Stack.Navigator>
   );
 }
+
 export default function App() {
   return (
     <AuthenticatedUserProvider>
       <RootNavigator />
+      <StatusBar barStyle={"default"} />
     </AuthenticatedUserProvider>
   );
 }

@@ -1,8 +1,9 @@
 {
   "expo": {
     "name": "Spark",
-    "slug": "Spark",
+    "slug": "spark",
     "version": "1.0.0",
+    "scheme": "com.lizzwizz.spark",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,15 +12,22 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "com.lizzwizz.spark",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +39,12 @@
           "photosPermission": "The app accesses your photo to let it share it with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "59c3b71d-3559-4678-af4f-a2f84181a72e"
+      }
+    },
+    "owner": "lizzwizz"
   }
 }
