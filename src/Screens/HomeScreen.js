@@ -7,30 +7,19 @@ const userAvatar = require("../../assets/man.png");
 import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <Image source={userAvatar} className="h-10 w-10" />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
 
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerRight: () => (
-                <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-                    <Image source={userAvatar} className="h-10 w-10" />
-                </TouchableOpacity>
-            ),
-        });
-    }, [navigation]);
-
-
-    
-
-    
-  return (
-    <View>
-      <TouchableOpacity onPress={() => signOut(auth)}>
-        <Text>Home Screen</Text>
-      </TouchableOpacity>
-    </View>
-  );
+  return <View></View>;
 };
 
 export default HomeScreen;

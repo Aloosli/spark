@@ -5,9 +5,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 const backImage = require("../../assets/background_signup.jpg");
 import { useNavigation } from "@react-navigation/native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/config";
-
-
+import { auth, db } from "../../firebase/config";
+import { addDoc, collection } from "firebase/firestore";
 
 const RegisterScreen = () => {
   const navigation = useNavigation();
@@ -20,9 +19,16 @@ const RegisterScreen = () => {
       if (password !== confirmpassword) {
         alert("Password and Confirm Password does not match");
       } else {
-        createUserWithEmailAndPassword(auth, email, password).then(() => {
-          console.log("User created successfully");
-        });
+        createUserWithEmailAndPassword(auth, email, password).then(
+          async (res) => {
+          console.log("Result = ", res);
+          await addDoc(collection(db, "users"), {
+            userId: res.user.uid,
+            email: res.user.email,
+            username: res.user.email.split("@")[0],
+          });
+        }
+        );
       }
     }
   };
