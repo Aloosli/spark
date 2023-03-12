@@ -4,10 +4,22 @@ import { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 const backImage = require("../../assets/background_signin.jpg");
 import { useNavigation } from "@react-navigation/native";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/config";
+
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const onHandleLogin = () => {
+    if (email !== "" && password !== "") {
+      signInWithEmailAndPassword(auth, email, password).then(() =>
+        console.log("User signed in successfully")
+      );
+    }
+  };
+
   return (
     <>
       <KeyboardAwareScrollView className="bg-black">
@@ -39,7 +51,10 @@ const LoginScreen = () => {
               onChangeText={(text) => setPassword(text)}
             />
           </View>
-          <TouchableOpacity className=" bg-[#fac25a] py-2 rounded-md mx-10 mt-16 mb-3">
+          <TouchableOpacity
+            onPress={onHandleLogin}
+            className=" bg-[#fac25a] py-2 rounded-md mx-10 mt-16 mb-3"
+          >
             <Text className="text-center font-semibold text-white text-lg ">
               Login
             </Text>
