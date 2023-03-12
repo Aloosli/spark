@@ -13,6 +13,7 @@ import ProfileScreen from "./src/Screens/ProfileScreen";
 import { useContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
+import SearchScreen from "./src/Screens/SearchScreen";
 const loadingGif = require("./assets/loading.gif");
 
 const Stack = createNativeStackNavigator();
@@ -61,6 +62,7 @@ function MainStack() {
     <Stack.Navigator>
       <Stack.Screen name="Spark" component={HomeScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Search" component={SearchScreen} />
     </Stack.Navigator>
   );
 }
